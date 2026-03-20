@@ -26,4 +26,4 @@ Organizar a rotina de atendimento, permitindo cadastrar servicos e controlar age
 
 - Flutter
 - Dart
--Supabase
+- Supabase
