@@ -129,7 +129,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///C:/Users/leona/Downloads/flutter/packages/flutter",
+      "rootUri": "file:///C:/Users/leona/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -141,19 +141,19 @@
     },
     {
       "name": "flutter_localizations",
-      "rootUri": "file:///C:/Users/leona/Downloads/flutter/packages/flutter_localizations",
+      "rootUri": "file:///C:/Users/leona/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///C:/Users/leona/Downloads/flutter/packages/flutter_test",
+      "rootUri": "file:///C:/Users/leona/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///C:/Users/leona/Downloads/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///C:/Users/leona/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -435,7 +435,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///C:/Users/leona/Downloads/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///C:/Users/leona/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -603,8 +603,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.11.1",
-  "flutterRoot": "file:///C:/Users/leona/Downloads/flutter",
-  "flutterVersion": "3.41.4",
+  "generatorVersion": "3.11.3",
+  "flutterRoot": "file:///C:/Users/leona/flutter",
+  "flutterVersion": "3.41.5",
   "pubCache": "file:///C:/Users/leona/AppData/Local/Pub/Cache"
 }

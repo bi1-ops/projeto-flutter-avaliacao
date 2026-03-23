@@ -9,6 +9,7 @@
       "dependencies": [
         "device_preview",
         "flutter",
+        "provider",
         "supabase_flutter"
       ],
       "devDependencies": [
@@ -57,6 +58,15 @@
         "supabase",
         "url_launcher",
         "web"
+      ]
+    },
+    {
+      "name": "provider",
+      "version": "6.1.5+1",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "nested"
       ]
     },
     {
@@ -274,6 +284,13 @@
       ]
     },
     {
+      "name": "nested",
+      "version": "1.0.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
       "name": "sky_engine",
       "version": "0.0.0",
       "dependencies": []
@@ -312,15 +329,6 @@
       "dependencies": [
         "flutter",
         "freezed_annotation"
-      ]
-    },
-    {
-      "name": "provider",
-      "version": "6.1.5+1",
-      "dependencies": [
-        "collection",
-        "flutter",
-        "nested"
       ]
     },
     {
@@ -657,13 +665,6 @@
         "app_links_platform_interface",
         "flutter",
         "gtk"
-      ]
-    },
-    {
-      "name": "nested",
-      "version": "1.0.0",
-      "dependencies": [
-        "flutter"
       ]
     },
     {

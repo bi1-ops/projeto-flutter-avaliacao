@@ -3,7 +3,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class AgendamentoService {
   final SupabaseClient _client = Supabase.instance.client;
 
-  Future<List<Map<String, dynamic>>> listarAgendamentos(String usuarioId) async {
+  Future<List<Map<String, dynamic>>> listarAgendamentos(
+    String usuarioId,
+  ) async {
     final response = await _client
         .from('agendamentos')
         .select()

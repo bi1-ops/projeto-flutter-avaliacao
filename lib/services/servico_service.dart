@@ -20,11 +20,7 @@ class ServicoService {
   }) async {
     final response = await _client
         .from('servicos')
-        .insert({
-          'usuario_id': usuarioId,
-          'nome': nome,
-          'preco': preco,
-        })
+        .insert({'usuario_id': usuarioId, 'nome': nome, 'preco': preco})
         .select()
         .single();
 
@@ -38,10 +34,7 @@ class ServicoService {
   }) async {
     final response = await _client
         .from('servicos')
-        .update({
-          'nome': nome,
-          'preco': preco,
-        })
+        .update({'nome': nome, 'preco': preco})
         .eq('id', id)
         .select()
         .single();

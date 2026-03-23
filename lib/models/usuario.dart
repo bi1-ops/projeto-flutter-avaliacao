@@ -12,4 +12,20 @@ class Usuario {
     this.telefone,
     this.createdAt,
   });
+
+  factory Usuario.fromMap(Map<String, dynamic> map) {
+    return Usuario(
+      id: map['id']?.toString(),
+      nomeDeUsuario: (map['nome_de_usuario'] ?? '').toString(),
+      email: (map['email'] ?? '').toString(),
+      telefone: map['telefone']?.toString(),
+      createdAt: _parseDateTime(map['created_at']),
+    );
+  }
+
+  static DateTime? _parseDateTime(dynamic value) {
+    if (value == null) return null;
+    if (value is DateTime) return value;
+    return DateTime.tryParse(value.toString());
+  }
 }
