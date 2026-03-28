@@ -102,10 +102,9 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton(
         onPressed: () => _abrirFormularioAgendamento(context, null),
-        icon: const Icon(Icons.add),
-        label: const Text('Novo agendamento'),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -236,7 +235,7 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
               ),
               actions: [
                 TextButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () => Navigator.of(context).pop(),
                   child: const Text('Cancelar'),
                 ),
                 ElevatedButton(
@@ -267,7 +266,27 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
 
                       if (!context.mounted) return;
                       setState(() => _dataSelecionada = dataSelecionada);
-                      Navigator.pop(context);
+                      Navigator.of(context).pop();
+
+                      await showDialog<void>(
+                        context: context,
+                        builder: (dialogContext) {
+                          return AlertDialog(
+                            title: Text(agendamento == null
+                                ? 'Agendamento criado'
+                                : 'Agendamento atualizado'),
+                            content: Text(agendamento == null
+                                ? 'Agendamento criado com sucesso.'
+                                : 'Agendamento atualizado com sucesso.'),
+                            actions: [
+                              ElevatedButton(
+                                onPressed: () => Navigator.of(dialogContext).pop(),
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     } catch (e) {
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -296,7 +315,7 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
     final provider = context.read<AppDataProvider>();
     final confirmar = await showDialog<bool>(
       context: context,
-      builder: (_) {
+      builder: (dialogContext) {
         return AlertDialog(
           title: const Text('Excluir agendamento'),
           content: Text(
@@ -304,11 +323,11 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context, false),
+              onPressed: () => Navigator.of(dialogContext).pop(false),
               child: const Text('Cancelar'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pop(context, true),
+              onPressed: () => Navigator.of(dialogContext).pop(true),
               child: const Text('Excluir'),
             ),
           ],
@@ -319,6 +338,22 @@ class _AgendamentosScreenState extends State<AgendamentosScreen> {
     if (confirmar != true) return;
     try {
       await provider.deletarAgendamento(agendamento.id!);
+      if (!context.mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (dialogContext) {
+          return AlertDialog(
+            title: const Text('Agendamento excluído'),
+            content: Text('Agendamento de ${agendamento.nomeCliente} excluído com sucesso.'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(dialogContext).pop(),
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     } catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(

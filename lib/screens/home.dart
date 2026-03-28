@@ -5,6 +5,7 @@ import 'package:projeto_avaliacao/providers/app_data_provider.dart';
 import 'package:projeto_avaliacao/screens/agendamentos.dart';
 import 'package:projeto_avaliacao/screens/login.dart';
 import 'package:projeto_avaliacao/screens/servicos.dart';
+import 'package:projeto_avaliacao/screens/sobre.dart';
 import 'package:projeto_avaliacao/theme/app_palette.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(AppConfig.logoAssetPath, height: 38),
+                  Image.asset(AppConfig.logoAssetPath, height: 60),
                   const SizedBox(height: 12),
                   Text(
                     usuario?.nomeDeUsuario ?? 'Usuario',
@@ -91,6 +92,17 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 Navigator.pop(context);
                 setState(() => _indice = 1);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('Sobre'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SobreScreen()),
+                );
               },
             ),
           ],

@@ -125,8 +125,6 @@ class ServicosScreen extends StatelessWidget {
                       preco: preco,
                     );
                   }
-                  if (!context.mounted) return;
-                  Navigator.pop(context);
                 } catch (e) {
                   if (!context.mounted) return;
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -136,7 +134,29 @@ class ServicosScreen extends StatelessWidget {
                       ),
                     ),
                   );
+                  return;
                 }
+
+                if (!context.mounted) return;
+                Navigator.pop(context);
+
+                await showDialog<void>(
+                  context: context,
+                  builder: (_) {
+                    return AlertDialog(
+                      title: Text(servico == null ? 'Serviço criado' : 'Serviço atualizado'),
+                      content: Text(servico == null
+                          ? 'Serviço criado com sucesso.'
+                          : 'Serviço atualizado com sucesso.'),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
               child: const Text('Salvar'),
             ),
@@ -172,6 +192,22 @@ class ServicosScreen extends StatelessWidget {
 
     try {
       await provider.deletarServico(servico.id!);
+      if (!context.mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            title: const Text('Serviço excluído'),
+            content: Text('Serviço "${servico.nome}" excluído com sucesso.'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     } catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
